@@ -12,7 +12,10 @@ export const reducer = (prevState: Store, action: StoreDispatch) => {
     case actions.ERROR:
       return {
         ...prevState,
-        error: [...prevState.error, action.payload],
+        error:
+          prevState && prevState.error
+            ? [...prevState.error, action.payload]
+            : [],
       };
     case actions.CLEAR_ERROR:
       return {

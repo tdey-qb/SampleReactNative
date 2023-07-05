@@ -7,8 +7,9 @@ const SaveUserTokenScreen = () => {
   return (
     <Layout>
       <View style={styles.wrapper}>
-        <UiText>saveUserTokenScreen</UiText>
+        <UiText style={styles.appBar}>Get Started!</UiText>
       </View>
+
     </Layout>
   );
 };
@@ -17,6 +18,9 @@ const styles = StyleSheet.create({
   wrapper: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  appBar: {
+    fontSize: 32,
   },
 });
 

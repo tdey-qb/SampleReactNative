@@ -10,11 +10,9 @@ import {Colors} from 'react-native/Libraries/NewAppScreen';
 const Layout = ({children}: {children: React.ReactNode}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.scrollView}>
       <ScrollView
-        contentContainerStyle={styles.scrollView}
         style={{
-          ...styles.scrollView,
           backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
         }}>
         {children}
@@ -25,7 +23,8 @@ const Layout = ({children}: {children: React.ReactNode}) => {
 
 const styles = StyleSheet.create({
   scrollView: {
-    flexGrow: 1,
+    flex: 1,
+    justifyContent: 'center',
   },
 });
 

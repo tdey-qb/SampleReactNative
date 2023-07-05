@@ -18,4 +18,12 @@ export class Storage {
   public static async getUserToken() {
     return await this.store.getItem('userToken');
   }
+
+  public static async setQuickbaseRealm(realm: string) {
+    await this.store.setItem('realm', realm);
+  }
+
+  public static async getQuickbaseRealm() {
+    return await this.store.getItem('realm');
+  }
 }

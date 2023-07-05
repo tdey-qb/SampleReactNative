@@ -1,15 +1,16 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from './containers/home/HomeScreen';
 import SettingsScreen from './containers/settings/SettingsScreen';
-import {Platform, StatusBar, useColorScheme} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {StatusBar} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {StoreProvider} from './state/context';
 import useUserToken from './hooks/useUserToken';
 import SaveUserTokenScreen from './containers/login/SaveUserTokenScreen';
+import {useTheme} from './hooks';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -43,46 +44,31 @@ function TabNavigation() {
 }
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const {Layout, darkMode, NavigationTheme} = useTheme();
+  const {colors} = NavigationTheme;
   const [userToken, isLoading] = useUserToken();
-
-  /**
-   * Set the status bar style
-   */
-  useEffect(() => {
-    StatusBar.setBarStyle(isDarkMode ? 'light-content' : 'dark-content');
-    if (Platform.OS === 'android') {
-      StatusBar.setBackgroundColor('rgba(0,0,0,0)');
-      StatusBar.setTranslucent(true);
-    }
-  }, [isDarkMode]);
 
   return (
     <StoreProvider>
-      <NavigationContainer
-        theme={{
-          dark: isDarkMode,
-          colors: {
-            text: isDarkMode ? Colors.light : Colors.dark,
-            background: isDarkMode ? Colors.darker : Colors.lighter,
-            primary: Colors.primary,
-            border: Colors.border,
-            card: Colors.card,
-            notification: Colors.notification,
-          },
-        }}>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-          {!isLoading && !userToken ? (
-            <Stack.Screen name="LoginScreen" component={SaveUserTokenScreen} />
-          ) : (
-            <Stack.Screen
-              name="HomeBase"
-              options={{headerShown: false}}
-              component={TabNavigation}
-            />
-          )}
-        </Stack.Navigator>
-      </NavigationContainer>
+      <SafeAreaView style={[Layout.fill, {backgroundColor: colors.card}]}>
+        <NavigationContainer theme={NavigationTheme}>
+          <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
+          <Stack.Navigator screenOptions={{headerShown: false}}>
+            {!isLoading && !userToken ? (
+              <Stack.Screen
+                name="LoginScreen"
+                component={SaveUserTokenScreen}
+              />
+            ) : (
+              <Stack.Screen
+                name="HomeBase"
+                options={{headerShown: false}}
+                component={TabNavigation}
+              />
+            )}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
     </StoreProvider>
   );
 };
