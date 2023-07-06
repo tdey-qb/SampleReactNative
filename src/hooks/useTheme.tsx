@@ -1,5 +1,5 @@
-import {useColorScheme} from 'react-native';
-import {DarkTheme, DefaultTheme} from '@react-navigation/native';
+import { useColorScheme } from 'react-native';
+import { DarkTheme, DefaultTheme } from '@react-navigation/native';
 import {
   Common,
   Fonts,
@@ -30,7 +30,7 @@ export default function () {
   let partialDarkTheme = {};
 
   if (currentTheme === 'dark') {
-    const {Variables, ...themeConfig} = themes || {};
+    const { Variables, ...themeConfig } = themes || {};
 
     variables = Variables;
     partialTheme = themeConfig || {};

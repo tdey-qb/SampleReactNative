@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Image, DimensionValue} from 'react-native';
-import {useTheme} from '../../hooks';
+import { View, Image, DimensionValue } from 'react-native';
+import { useTheme } from '../../hooks';
 
 type Props = {
   height?: DimensionValue;
@@ -8,8 +8,8 @@ type Props = {
   mode?: 'contain' | 'cover' | 'stretch' | 'repeat' | 'center';
 };
 
-const Brand = ({height, width, mode}: Props) => {
-  const {Layout, Images} = useTheme();
+const Brand = ({ height, width, mode }: Props) => {
+  const { Layout, Images } = useTheme();
 
   return (
     <View
@@ -17,7 +17,7 @@ const Brand = ({height, width, mode}: Props) => {
       style={[Layout.alignItemsCenter, Layout.fullWidth]}>
       <Image
         testID={'brand-img'}
-        style={[Layout.fullSize, {height, width}]}
+        style={[Layout.fullSize, { height, width }]}
         source={Images.logo}
         resizeMode={mode}
       />

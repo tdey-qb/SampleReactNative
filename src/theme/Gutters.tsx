@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import {Gutters, ThemeVariables} from '../../@types/theme';
+import { StyleSheet } from 'react-native';
+import { Gutters, ThemeVariables } from '../../@types/theme';
 
 /**
  * Generate Styles depending on MetricsSizes vars availabled at ./theme/Variables
@@ -13,7 +13,7 @@ import {Gutters, ThemeVariables} from '../../@types/theme';
  * <op>: can be ['Margin', 'Padding']
  * <value>: is the value of the <size>
  */
-export default function ({MetricsSizes}: ThemeVariables): Gutters {
+export default function ({ MetricsSizes }: ThemeVariables): Gutters {
   return StyleSheet.create(
     Object.entries(MetricsSizes).reduce(
       (acc, [key, value]) => ({

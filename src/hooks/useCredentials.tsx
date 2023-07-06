@@ -1,21 +1,21 @@
-import {useCallback, useEffect, useState} from 'react';
-import {Storage} from '../data/storage';
-import {useStoreDispatch} from '../state/context';
-import {actions} from '../state/actions';
-import {Credentials} from '../state/storeInterface';
+import { useCallback, useEffect, useState } from 'react';
+import { Storage } from '../data/storage';
+import { useStoreDispatch } from '../state/context';
+import { actions } from '../state/actions';
+import { Credentials } from '../state/storeInterface';
 
 const useCredentials = () => {
   const [credentials, setCredentials] = useState<Credentials | null>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const {dispatch} = useStoreDispatch();
+  const { dispatch } = useStoreDispatch();
 
   const getCredentials = useCallback(async () => {
     try {
       const storedToken = await Storage.getUserToken();
       const storedReam = await Storage.getQuickbaseRealm();
 
-      const storeCred = {realm: storedReam, userToken: storedToken};
+      const storeCred = { realm: storedReam, userToken: storedToken };
 
       setCredentials(storeCred);
       dispatch({
@@ -60,7 +60,7 @@ const useCredentials = () => {
     setLoading(false);
   }, [getCredentials]);
 
-  return {credentials, saveCredentials, loading, error};
+  return { credentials, saveCredentials, loading, error };
 };
 
 export default useCredentials;

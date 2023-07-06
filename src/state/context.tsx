@@ -1,6 +1,6 @@
-import React, {createContext, useContext, useReducer} from 'react';
-import {reducer} from './reducer';
-import {Store, StoreDispatch} from './storeInterface';
+import React, { createContext, useContext, useReducer } from 'react';
+import { reducer } from './reducer';
+import { Store, StoreDispatch } from './storeInterface';
 
 const INITIAL_STATE = {
   credentials: null,
@@ -14,20 +14,22 @@ const StoreContextDispatcher = createContext<{
   dispatch: () => {},
 });
 
-const StoreContext = createContext<{state: Store}>({state: INITIAL_STATE});
+const StoreContext = createContext<{ state: Store }>({ state: INITIAL_STATE });
 
 const useStoreDispatch = () => {
   return useContext(StoreContextDispatcher);
 };
 
-const StoreProvider = ({children}: {children: React.ReactNode}) => {
+const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
   return (
-    <StoreContextDispatcher.Provider value={{dispatch}}>
-      <StoreContext.Provider value={{state}}>{children}</StoreContext.Provider>
+    <StoreContextDispatcher.Provider value={{ dispatch }}>
+      <StoreContext.Provider value={{ state }}>
+        {children}
+      </StoreContext.Provider>
     </StoreContextDispatcher.Provider>
   );
 };
 
-export {StoreProvider, useStoreDispatch};
+export { StoreProvider, useStoreDispatch };

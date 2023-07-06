@@ -1,3 +1,3 @@
 import UiText from './uiText';
 
-export {UiText};
+export { UiText };

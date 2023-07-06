@@ -1,5 +1,5 @@
-import {actions} from './actions';
-import {StoreDispatch, Store} from './storeInterface';
+import { actions } from './actions';
+import { StoreDispatch, Store } from './storeInterface';
 
 export const reducer = (prevState: Store, action: StoreDispatch) => {
   switch (action.type) {

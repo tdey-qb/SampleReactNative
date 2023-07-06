@@ -1,7 +1,7 @@
-import {StyleSheet, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import Wrapper from '../../components/Wrapper';
-import {UiText} from '../../components/ui';
+import { UiText } from '../../components/ui';
 
 const HomeScreen = () => {
   return (

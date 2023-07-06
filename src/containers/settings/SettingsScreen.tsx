@@ -1,12 +1,12 @@
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
-import React, {useTransition} from 'react';
+import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import React, { useTransition } from 'react';
 import i18next from 'i18next';
 import Wrapper from '../../components/Wrapper';
-import {UiText} from '../../components/ui';
-import {useTheme} from '../../hooks';
+import { UiText } from '../../components/ui';
+import { useTheme } from '../../hooks';
 
 const SettingsScreen = () => {
-  const {Layout, Gutters, Common, darkMode: isDark, Images} = useTheme();
+  const { Layout, Gutters, Common, darkMode: isDark, Images } = useTheme();
   // const {t} = useTransition();
 
   const onChangeLanguage = (lang: 'fr' | 'en') => {
@@ -39,10 +39,10 @@ const SettingsScreen = () => {
               onChangeLanguage(i18next.language === 'fr' ? 'en' : 'fr')
             }>
             <Image
-              height={40}
-              width={40}
+              height={20}
+              width={20}
               source={Images.icons.translate}
-              style={{tintColor: isDark ? '#A6A4F0' : '#44427D'}}
+              style={{ tintColor: isDark ? '#A6A4F0' : '#44427D' }}
             />
           </TouchableOpacity>
         </View>

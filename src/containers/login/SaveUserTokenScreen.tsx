@@ -1,20 +1,20 @@
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import React from 'react';
-import {Controller, useForm} from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import Wrapper from '../../components/Wrapper';
-import {UiText} from '../../components/ui';
-import {useCredentials, useTheme} from '../../hooks';
+import { UiText } from '../../components/ui';
+import { useCredentials, useTheme } from '../../hooks';
 import Brand from '../../components/brand/Brand';
-import {Credentials} from '../../state/storeInterface';
+import { Credentials } from '../../state/storeInterface';
 import ShowError from './ShowError';
 
 const SaveUserTokenScreen = () => {
-  const {Layout, Colors, Gutters, Fonts} = useTheme();
-  const {saveCredentials, loading: isLoading, error} = useCredentials();
+  const { Layout, Colors, Gutters, Fonts } = useTheme();
+  const { saveCredentials, loading: isLoading, error } = useCredentials();
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm({
     defaultValues: {
       realm: '',
@@ -23,7 +23,7 @@ const SaveUserTokenScreen = () => {
   });
 
   const onSubmit = (data: Credentials) => {
-    saveCredentials({realm: data.realm, userToken: data.userToken});
+    saveCredentials({ realm: data.realm, userToken: data.userToken });
   };
 
   return (
@@ -39,13 +39,13 @@ const SaveUserTokenScreen = () => {
         <UiText style={Fonts.textRegular}>Get Started!</UiText>
       </View>
 
-      <View style={[Gutters.smallHPadding, {...styles.container}]}>
+      <View style={[Gutters.smallHPadding, { ...styles.container }]}>
         <Text style={[Fonts.textSmall, Gutters.tinyBMargin]}>
           Your Quickbase Realm
         </Text>
         <Controller
           control={control}
-          render={({field: {onChange, onBlur, value}}) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={[
                 {
@@ -61,7 +61,7 @@ const SaveUserTokenScreen = () => {
             />
           )}
           name="realm"
-          rules={{required: true}}
+          rules={{ required: true }}
         />
 
         <Text style={[Fonts.textSmall, Gutters.tinyBMargin]}>
@@ -69,7 +69,7 @@ const SaveUserTokenScreen = () => {
         </Text>
         <Controller
           control={control}
-          render={({field: {onChange, onBlur, value}}) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               secureTextEntry={true}
               style={[
@@ -83,14 +83,13 @@ const SaveUserTokenScreen = () => {
               onChangeText={text => onChange(text)}
               value={value}
               placeholder="xxxx_xx_xxxxxxxxxx"
-              placeholderTextColor={Colors.dark}
             />
           )}
           name="userToken"
-          rules={{required: true}}
+          rules={{ required: true }}
         />
 
-        <View style={{...styles.button, backgroundColor: Colors.primary}}>
+        <View style={{ ...styles.button, backgroundColor: Colors.primary }}>
           <Button
             color={Colors.white}
             title={isLoading ? 'Saving...' : 'Continue'}

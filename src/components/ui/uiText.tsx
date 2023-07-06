@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleProp, Text, TextStyle, useColorScheme} from 'react-native';
+import { StyleProp, Text, TextStyle, useColorScheme } from 'react-native';
 
 const UiText = ({
   children,
@@ -15,7 +15,7 @@ const UiText = ({
   const textColor = colorScheme === 'dark' ? '#FFF' : '#000';
 
   return (
-    <Text style={[style, {color: textColor}]} {...rest}>
+    <Text style={[style, { color: textColor }]} {...rest}>
       {children}
     </Text>
   );
