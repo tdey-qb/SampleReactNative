@@ -12,10 +12,12 @@ const Brand = ({height, width, mode}: Props) => {
   const {Layout, Images} = useTheme();
 
   return (
-    <View testID={'brand-img-wrapper'} style={{height, width}}>
+    <View
+      testID={'brand-img-wrapper'}
+      style={[Layout.alignItemsCenter, Layout.fullWidth]}>
       <Image
         testID={'brand-img'}
-        style={Layout.fullSize}
+        style={[Layout.fullSize, {height, width}]}
         source={Images.logo}
         resizeMode={mode}
       />
@@ -24,8 +26,8 @@ const Brand = ({height, width, mode}: Props) => {
 };
 
 Brand.defaultProps = {
-  height: 200,
-  width: 200,
+  height: 180,
+  width: 180,
   mode: 'contain',
 };
 

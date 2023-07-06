@@ -1,2 +1,2 @@
 export {default as useTheme} from './useTheme';
-export {default as useUserToken} from './useUserToken';
+export {default as useCredentials} from './useCredentials';

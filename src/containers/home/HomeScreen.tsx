@@ -1,15 +1,15 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
-import Layout from '../../components/Layout';
+import Wrapper from '../../components/Wrapper';
 import {UiText} from '../../components/ui';
 
 const HomeScreen = () => {
   return (
-    <Layout>
+    <Wrapper>
       <View>
         <UiText>HomeScreen</UiText>
       </View>
-    </Layout>
+    </Wrapper>
   );
 };
 

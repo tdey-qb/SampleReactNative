@@ -3,10 +3,10 @@ import {StoreDispatch, Store} from './storeInterface';
 
 export const reducer = (prevState: Store, action: StoreDispatch) => {
   switch (action.type) {
-    case actions.USER_TOKEN:
+    case actions.CREDENTIALS:
       return {
         ...prevState,
-        userToken: action.payload,
+        credentials: action.payload,
         isLoading: false,
       };
     case actions.ERROR:

@@ -3,8 +3,13 @@ export interface StoreDispatch {
   payload: any;
 }
 
+export interface Credentials {
+  realm: string | null;
+  userToken: string | null;
+}
+
 export interface Store {
-  userToken?: String | null;
+  credentials?: Credentials | null;
   isLoading?: boolean;
   error?: String[];
 }

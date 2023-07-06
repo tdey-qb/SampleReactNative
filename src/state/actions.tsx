@@ -1,5 +1,5 @@
 export const actions = {
-  USER_TOKEN: 'USER_TOKEN',
+  CREDENTIALS: 'CREDENTIALS',
   ERROR: 'ERROR',
   CLEAR_ERROR: 'CLEAR_ERROR',
 };

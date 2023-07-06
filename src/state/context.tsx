@@ -3,7 +3,7 @@ import {reducer} from './reducer';
 import {Store, StoreDispatch} from './storeInterface';
 
 const INITIAL_STATE = {
-  userToken: null,
+  credentials: null,
   isLoading: false,
   error: [],
 };
